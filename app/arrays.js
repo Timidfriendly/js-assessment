@@ -7,6 +7,7 @@ exports.arraysAnswers = {
       for (len = arr.length; i < len; i++) {
           if (arr[i] === item) {
               return i;
+
           }
       }
       return -1;
@@ -20,16 +21,35 @@ exports.arraysAnswers = {
           sum = sum + arr[i];
 
       }
-      console.log(sum);
+      //console.log(sum);
       return sum;
   },
 
   remove : function(arr, item) {
+      var newArr = []; // forgot to initialise newArr 'as' array with []
+      for (len = arr.length; i < len; i++) {
+        if ( arr[i] !== item ) {
+            console.log('234444444');
 
+            newArr.push(arr[i]);
+          console.log("newArr = " + newArr);
+            
+        }
+
+      }
+      return newArr;
   },
 
   removeWithoutCopy : function(arr, item) {
+//          if (arr[i] !== item) {
+//           alert(item);
+//               //return i;
 
+//           }
+
+      // if (arr;i] === item) {
+      //   item = arr.splice(arr[i]);
+      // }
   },
 
   append : function(arr, item) {
