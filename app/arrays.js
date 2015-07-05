@@ -27,29 +27,33 @@ exports.arraysAnswers = {
 
   remove : function(arr, item) {
       var newArr = []; // forgot to initialise newArr 'as' array with []
+      var i = 0;
+
       for (len = arr.length; i < len; i++) {
         if ( arr[i] !== item ) {
-            console.log('234444444');
-
             newArr.push(arr[i]);
-          console.log("newArr = " + newArr);
-            
         }
-
       }
       return newArr;
   },
 
   removeWithoutCopy : function(arr, item) {
-//          if (arr[i] !== item) {
-//           alert(item);
-//               //return i;
 
-//           }
+      var i = 0;
+      console.log('original = ' + arr);
+      console.log('number to remove = ' + item);
 
-      // if (arr;i] === item) {
-      //   item = arr.splice(arr[i]);
-      // }
+
+      for ( len = arr.length; i < len; i++ ) {
+          if (arr[i] === item) {
+              arr.splice(i, 1);
+              i--; //prevent skipping an item otherwise it just removes the first and last. It works by reducing the index by one after removal
+          }
+          console.log('new = ' + arr);
+
+      }
+      return arr;
+
   },
 
   append : function(arr, item) {
