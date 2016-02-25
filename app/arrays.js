@@ -2,97 +2,155 @@ exports = (typeof window === 'undefined') ? global : window;
 
 exports.arraysAnswers = {
 
-  indexOf : function(arr, item) {
-      var i = 0;
-      for (len = arr.length; i < len; i++) {
-          if (arr[i] === item) {
-              return i;
-
-          }
-      }
-      return -1;
-  },
-
-  sum : function(arr) {
-
-          var sum = 0;
-      var i = 0;
-      for (len = arr.length; i < len; i++) {
-          sum = sum + arr[i];
-
-      }
-      //console.log(sum);
-      return sum;
-  },
-
-  remove : function(arr, item) {
-      var newArr = []; // forgot to initialise newArr 'as' array with []
-      var i = 0;
-
-      for (len = arr.length; i < len; i++) {
-        if ( arr[i] !== item ) {
-            newArr.push(arr[i]);
+    indexOf: function (arr, item) {
+        // Determine the location of an item in an array
+        var i = 0;
+        for (len = arr.length; i < len; i++) {
+            if (arr[i] === item) {
+                return i;
+            }
         }
-      }
-      return newArr;
-  },
+        return -1;
+    },
 
-  removeWithoutCopy : function(arr, item) {
+    sum: function (arr) {
+        // Add all the values of an array together
+        var sum = 0;
+        var i = 0;
+        for (len = arr.length; i < len; i++) {
+            sum = sum + arr[i];
 
-      var i = 0;
-      console.log('original = ' + arr);
-      console.log('number to remove = ' + item);
+        }
+        return sum;
+    },
 
+    remove: function (arr, item) {
+        // Remove all instances of a value from an array
+        var newArr = []; // forgot to initialise newArr 'as' array with []
+        var i = 0;
 
-      for ( len = arr.length; i < len; i++ ) {
-          if (arr[i] === item) {
-              arr.splice(i, 1);
-              i--; //prevent skipping an item otherwise it just removes the first and last. It works by reducing the index by one after removal
-          }
-          console.log('new = ' + arr);
+        for (len = arr.length; i < len; i++) {
+            if (arr[i] !== item) {
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    },
 
-      }
-      return arr;
+    removeWithoutCopy: function (arr, item) {
+        // Remove all instances of a value from an array, returning the original array
+        var i = 0;
+        for (len = arr.length; i < len; i++) {
+            if (arr[i] === item) {
+                arr.splice(i, 1);
+                i--;
+                //prevent skipping an item otherwise it just removes the first and last. It works by reducing the index by one after removal
+            }
+        }
+        return arr;
+    },
 
-  },
+    append: function (arr, item) {
+        // Add an item to the end of an array
+        (function () {
+            arr.push(item);
+        })();
+        return arr;
+    },
 
-  append : function(arr, item) {
+    truncate: function (arr) {
+        // Remove the last item of an array
+        arr.pop();
 
-  },
+        return arr;
+    },
 
-  truncate : function(arr) {
+    prepend: function (arr, item) {
+        // Add an item to the beginning of an array
+        //console.log("orig = " + arr);
 
-  },
+        arr.splice(0, 0, item);
+        //console.log("new = " + arr);
 
-  prepend : function(arr, item) {
+        return arr;
 
-  },
+    },
 
-  curtail : function(arr) {
+    curtail: function (arr) {
+        // Remove the first item of an array
+        arr.shift();
+        return arr;
+    },
 
-  },
+    concat: function (arr1, arr2) {
+        // join together two arrays (this preserve the original arrays
+        var arr3 = [];
+        arr3 = arr1.concat(arr2);
 
-  concat : function(arr1, arr2) {
+        return arr3;
+    },
 
-  },
+    insert: function (arr, item, index) {
+        //Add an item anywhere in an array
+        arr.splice(index,0,item);
 
-  insert : function(arr, item, index) {
+        return arr;
+    },
 
-  },
+    count: function (arr, item) {
+        // count the occurences of an item in an array
+        var i = 0;
+        count = 0;
+        for (len = arr.length; i < len; i++) {
+            if (arr[i] === item) {
+                count++;
+            }
+        }
+        return count;
+    },
 
-  count : function(arr, item) {
+    duplicates: function (arr) {
+        // find duplicates in an array
+        console.log("orig dupe arr = " + arr);
 
-  },
+        var seen = {};
+        var dupes = [];
 
-  duplicates : function(arr) {
+        for (var i = 0, len = arr.length; i < len; i++) {
+            seen[arr[i]] = seen[arr[i]] ? seen[arr[i]] + 1 : 1;
+        }
 
-  },
+        for (var item in seen) {
+            if (seen.hasOwnProperty(item) && seen[item] > 1) {
+                dupes.push(item);
+            }
+        }
+        console.log(dupes);
 
-  square : function(arr) {
+        return dupes;
 
-  },
+    },
 
-  findAllOccurrences : function(arr, target) {
+    square: function (arr) {
+        for (var i = 0, len = arr.length; i < len; i++) {
+            arr[i] = arr[i] * arr[i];
+        }
+        return arr;
+    },
 
-  }
+    findAllOccurrences: function (arr, target) {
+        var i = 0;
+        console.log("arr = " + arr);
+        console.log("target = " + target);
+
+        //var len = arr.length;
+        for (len = arr.length; i < len; i++) {
+
+            if (target == arr[i]) {
+                return arr[i];
+
+            }
+
+        }
+    }
 };
